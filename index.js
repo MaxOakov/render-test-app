@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Підключення dotenv для роботи з .env файлами
+require('dotenv').config();
+
 // Middleware для обробки даних форми
 app.use(express.urlencoded({ extended: true }));
 
@@ -19,8 +22,8 @@ app.get('/', (req, res) => {
 // Обробка даних з форми
 app.post('/greet', (req, res) => {
     const userName = req.body.name;
-    res.send(`Hello, ${userName}. You are on port ${port}!`),
-    res.send(`AAA value is ${process.env.AAA}`);
+    const aaaValue = process.env.AAA;  // Зчитуємо значення з змінної середовища
+    res.send(`Hello, ${userName}. You are on port ${port}! The Vallue of AAA is ${aaaValue}.`);
 });
 
 app.listen(port, () => {
