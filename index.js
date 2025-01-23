@@ -19,7 +19,8 @@ app.get('/', (req, res) => {
 // Обробка даних з форми
 app.post('/greet', (req, res) => {
     const userName = req.body.name;
-    res.send(`Hello, ${userName}. You are on port ${port}!`);
+    res.send(`Hello, ${userName}. You are on port ${port}!`),
+    res.send(`AAA value is ${process.env.AAA}`);
 });
 
 app.listen(port, () => {
